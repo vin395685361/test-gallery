@@ -1,0 +1,64 @@
+'use strict'
+import React from 'react';
+
+// antd
+import { Tabs } from 'antd';
+
+// CSS
+require('normalize.css/normalize.css');
+require('styles/App.css');
+import style from '../styles/antd.css';
+import imageData_1 from '../data/imageDatas_1.json';
+
+const TabPane = Tabs.TabPane;
+
+
+// Gallery
+class Gallery extends React.Component {
+
+	componentWillMount(){
+	}
+
+  	render() {
+  		let imageData = this.props.data;
+  		return(
+  			<div>
+  				{
+  				imageData.map(function (item,index) {
+			        return (
+			          	<div className = "gal-box" key={index}>
+					      	{item.desc}
+					    </div>
+			        );
+    			})
+  			}
+
+
+  			</div>
+  			)
+
+
+	}
+}
+
+// 主
+class AppComponent extends React.Component {
+  render() {
+  	//console.log(imageData_1);
+    return (
+      <div>
+      	<Tabs defaultActiveKey="1">
+		    <TabPane tab="Tab 1" key="1"><Gallery data={imageData_1} /></TabPane>
+		    <TabPane tab="Tab 2" key="2"><Gallery data={imageData_1} /></TabPane>
+		    <TabPane tab="Tab 3" key="3"><Gallery data={imageData_1} /></TabPane>
+		</Tabs>
+  
+      </div>
+    );
+  }
+}
+
+AppComponent.defaultProps = {
+};
+
+export default AppComponent;
